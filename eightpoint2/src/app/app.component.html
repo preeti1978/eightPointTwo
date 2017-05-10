@@ -1,0 +1,49 @@
+<h1>
+ Form to validate
+</h1>
+<form  #eventForm="ngForm" (ngSubmit)="validateMe(eventForm.value)" >
+			<fieldset  id="formFieldSet" style="background-color: GREY;">
+				<table border="1" id="frmTable" style="line-height: 1.5em;">
+					<tr>
+					<td>Name<span>*</span><br><small>Name must be between 2 and 50 chars</small></td><!--2 way data binding to the event object in model -->
+					<td><input type="text" name="name"  [(ngModel)]="event.name" required>
+					<span *ngIf="nameInvalid">Invalid name</span>
+					</td>
+					</tr>
+					<tr>
+					<tr>
+					<td>Password<span>*</span><br><small>Password must be 7 to 15 characters which contain only characters,<br> numeric digits, underscore and first<br> character must be a letter</small></td><!--2 way data binding to the event object in model -->
+					<td><input type="password" name="pwd"  [(ngModel)]="event.pwd" required>
+					<span *ngIf="pwdInvalid">Invalid password</span>
+					</td>
+					</tr>
+					<tr>
+					<td>Date<span>*</span></td>
+					<td><input type="date" placeholder="mm/dd/yyyy"  name="date" [(ngModel)]="event.date" required>
+					<span *ngIf="dateInvalid">Date is invalid. Must be in mm/dd/yyyy format</span>
+					</td>
+					</tr>
+					<tr>
+					<td>Email<span>*</span></td>
+					<td><input type="text"  name="email" required  [(ngModel)]="event.email"><span *ngIf="emailInvalid">Invalid email</span>
+</td>
+					</tr>
+					<tr>
+					<td>City<span>*</span></td>
+					<td><input type="text" name="city"  [(ngModel)]="event.city"  required></td>
+					</tr>
+					<tr>
+					<td>PIN<span>*</span></td>
+					<td><input type="text" name="pin"  [(ngModel)]="event.pin" required>
+					<span *ngIf="pinInvalid">Pin must be 6 characters long</span>
+					</td>
+
+					</tr>
+					<tr>
+					<td colspan="2" align="center">
+					<button type="submit" >VALIDATE</button>&nbsp;&nbsp;All fields in <span>*</span> are mandatory
+					</td>
+					</tr>
+				</table>
+			</fieldset>
+		</form>
